@@ -1,6 +1,7 @@
 package com.olimpio.taskmanager.service;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import com.olimpio.taskmanager.util.JwtUtil;
 import io.jsonwebtoken.security.SignatureException;
@@ -25,22 +26,26 @@ public class FilterToken extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
 
-        String authHeader = request.getHeader("Authorization");
-        if (authHeader == null){
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            return;
-        }
+        if (!Objects.equals(request.getRequestURI(), "/login")) {
 
-        String token = authHeader.substring("Bearer ".length());
+            String authHeader = request.getHeader("Authorization");
+            if (authHeader == null) {
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                return;
+            }
+
+            String token = authHeader.substring("Bearer ".length());
 
 
+            try {
+                jwtUtil.validarToken(token);
 
-        try {
-            jwtUtil.validarToken(token);
-
+                filterChain.doFilter(request, response);
+            } catch (SignatureException e) {
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            }
+        } else {
             filterChain.doFilter(request, response);
-        } catch (SignatureException e){
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         }
     }
 
