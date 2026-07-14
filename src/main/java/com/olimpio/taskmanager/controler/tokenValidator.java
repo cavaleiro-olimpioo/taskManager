@@ -1,5 +1,6 @@
 package com.olimpio.taskmanager.controler;
 
+import com.olimpio.taskmanager.domain.tokenReciveRequest;
 import com.olimpio.taskmanager.util.JwtUtil;
 import io.jsonwebtoken.Claims;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +18,8 @@ public class tokenValidator {
 
     @PostMapping
     @CrossOrigin("http://localhost:5173")
-    public Claims returnValitator(@RequestBody String token){
-        return jwtUtil.validarToken(token);
+    public Claims returnValitator(@RequestBody tokenReciveRequest token){
+        return jwtUtil.validarToken(token.getToken());
     }
 
 }
