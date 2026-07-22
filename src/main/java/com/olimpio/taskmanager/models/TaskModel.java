@@ -11,9 +11,10 @@ import java.util.UUID;
 @Entity
 @Table(name = "TASK_TB")
 public class TaskModel implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private UUID id;
 
     @Column
@@ -22,7 +23,7 @@ public class TaskModel implements Serializable {
     @Column
     private LocalDateTime dateEnd;
 
-    @Column
+    @Column(nullable = false, unique = true)
     private String title;
 
     @Column
@@ -30,6 +31,10 @@ public class TaskModel implements Serializable {
 
     @Column
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserModel user;
 
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
