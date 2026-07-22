@@ -55,18 +55,30 @@ function Sign(){
             if(!AgreeTermsRef.current.checked){
                 errorTermsRef.current.classList.add("opacity-100")
                 errorTermsRef.current.classList.remove("opacity-0")
+            } else {
+                errorTermsRef.current.classList.add("opacity-0")
+                errorTermsRef.current.classList.remove("opacity-100")
             }
             if (usernameRef.current.value === ""){
                 errorUsernameRef.current.classList.add("opacity-100")
                 errorUsernameRef.current.classList.remove("opacity-0")
+            } else {
+                errorUsernameRef.current.classList.add("opacity-0")
+                errorUsernameRef.current.classList.remove("opacity-100")
             }
             if (emailRef.current.value === ""){
                 errorEmailRef.current.classList.add("opacity-100")
                 errorEmailRef.current.classList.remove("opacity-0")
+            } else {
+                errorEmailRef.current.classList.add("opacity-0")
+                errorEmailRef.current.classList.remove("opacity-100")
             }
             if (passwordRef.current.value === ""){
                 errorPasswordRef.current.classList.add("opacity-100")
                 errorPasswordRef.current.classList.remove("opacity-0")
+            } else {
+                errorPasswordRef.current.classList.add("opacity-0")
+                errorPasswordRef.current.classList.remove("opacity-100")
             }
             
         } else {
