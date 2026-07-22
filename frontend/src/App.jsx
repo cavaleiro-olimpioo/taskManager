@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom"
 import Login from './components/login';
 import Dashboard from './components/dashboard'
 import { useEffect } from "react";
+import Sign from "./components/Sign.jsx";
 
 function App() {
   const navigate = useNavigate();
@@ -39,11 +40,12 @@ function App() {
 
 
   return (
-    <div className="gap-10 w-screen h-screen bg-indigo-950 flex items-center justify-center flex-col">
+    <div className="gap-10 w-screen h-screen bg-gray-800 flex items-center justify-center flex-col">
       
       <Routes>
-        <Route path='/login' element={<Login />}></Route>
-        <Route path='/dashboard' element={<Dashboard />}></Route>
+          <Route path='/login' element={<Login />}></Route>
+          <Route path='/Sign' element={<Sign />}></Route>
+          <Route path='/dashboard' element={<Dashboard />}></Route>
       </Routes>
     
     </div>

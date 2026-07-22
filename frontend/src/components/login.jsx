@@ -41,7 +41,7 @@ function Login() {
             <input ref={nameRef} className="w-md h-15 bg-indigo-950 text-zinc-50 pl-5" type="text" name="name" id="iname" placeholder="Ex: Ronaldinho" />
             <input ref={passRef} className="w-md h-15 bg-indigo-950 text-zinc-50 pl-5" type="password" name="pass" id="ipass" placeholder="Ex: 1234" />
             <button onClick={() => PostLogin(nameRef, passRef)} className="w-md h-15 bg-indigo-900 cursor-pointer mt-6 text-zinc-50">Entrar</button>
-            <a href="#">Não tenho uma conta</a>
+            <button onClick={() => {navigate('/Sign')}}>Não tenho uma conta</button>
         </main>
     )
 }
