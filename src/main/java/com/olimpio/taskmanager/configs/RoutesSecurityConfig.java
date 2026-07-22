@@ -26,7 +26,7 @@ public class RoutesSecurityConfig {
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/validator").permitAll()
+                        .requestMatchers("/login", "/validator", "/sign").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(filterToken, UsernamePasswordAuthenticationFilter.class);

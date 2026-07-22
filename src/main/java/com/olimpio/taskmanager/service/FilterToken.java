@@ -35,7 +35,7 @@ public class FilterToken extends OncePerRequestFilter {
 
         if (!Objects.equals(request.getRequestURI(), "/login")) {
             if (!Objects.equals(request.getRequestURI(), "/validator")) {
-                if (!Objects.equals(request.getRequestURI(), "/Sign")) {
+                if (!Objects.equals(request.getRequestURI(), "/sign")) {
 
                     String authHeader = request.getHeader("Authorization");
                     if (authHeader == null) {
@@ -55,6 +55,8 @@ public class FilterToken extends OncePerRequestFilter {
                     } catch (SignatureException e) {
                         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                     }
+                } else {
+                    filterChain.doFilter(request, response);
                 }
             } else {
                 filterChain.doFilter(request, response);

@@ -22,6 +22,9 @@ public class UserModel implements Serializable {
     @Column()
     private String firstName;
 
+    @Column()
+    private String lastName;
+
     @Column(nullable = false, unique = true)
     private String username;
 
@@ -52,4 +55,7 @@ public class UserModel implements Serializable {
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
+
+    public String getLastName() { return lastName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
 }
