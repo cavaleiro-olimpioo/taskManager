@@ -18,6 +18,10 @@ public class ConsulteDatabase {
         this.userConsute = userConsute;
     }
 
+    public String getPassword(String user) {
+        password = userConsute.findPassword(user);
+        return password;
+    }
 
     public List<String> getAllUsers() {
         allUsers = userConsute.findAllUsernames();
