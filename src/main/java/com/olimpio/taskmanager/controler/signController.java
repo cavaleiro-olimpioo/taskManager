@@ -19,10 +19,12 @@ public class signController {
 
     @PostMapping
     @CrossOrigin("http://localhost:5173")
-    public void CreateAccount(@RequestBody UserNew body, HttpServletResponse response) throws IOException {
-        System.out.println("Indo para sign");
-        signService.createAccount(body.getEmail(), body.getUsername(), body.getFirstName(), body.getLastName(), body.getPassword());
-        System.out.println("Indo para login");
-        response.sendRedirect("/login");
+    public String CreateAccount(@RequestBody UserNew body, HttpServletResponse response) throws IOException {
+        try {
+            signService.createAccount(body.getEmail(), body.getUsername(), body.getFirstName(), body.getLastName(), body.getPassword());
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+        return "Success";
     }
 }

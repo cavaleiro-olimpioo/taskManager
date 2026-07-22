@@ -50,7 +50,7 @@ function Sign(){
 
     }, [temp])
 
-    function submit(){
+    async function submit(){
         if (!AgreeTermsRef.current.checked || usernameRef.current.value === "" || emailRef.current.value === "" || passwordRef.current.value === ""){
             if(!AgreeTermsRef.current.checked){
                 errorTermsRef.current.classList.add("opacity-100")
@@ -82,7 +82,27 @@ function Sign(){
             }
             
         } else {
-            window.alert("Conta criada com sucesso!")
+            const requestOptions = {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    "email": emailRef.current.value,
+                    "username": usernameRef.current.value,
+                    "firstName": firstNameRef.current.value,
+                    "lastName": lastNameRef.current.value,
+                    "password": passwordRef.current.value
+                })
+            }
+            const url = 'http://localhost:8080/sign'
+            try {
+                const returnApiLogin = await fetch(url, requestOptions)
+                const data = await returnApiLogin.json()
+
+                window.alert(data.message)
+
+            } catch (error) {
+                console.log("[ERRO] Não foi possível se conectar com a API", error)
+            }
             navigate('/login')
         }
     }
