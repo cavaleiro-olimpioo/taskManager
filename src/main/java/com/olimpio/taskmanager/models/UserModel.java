@@ -28,6 +28,9 @@ public class UserModel implements Serializable {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private String email;
+
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<TaskModel> tasks = new ArrayList<>();
@@ -46,4 +49,7 @@ public class UserModel implements Serializable {
 
     public List<TaskModel> getTasks() { return tasks; }
     public void setTasks(List<TaskModel> tasks) { this.tasks = tasks; }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 }
