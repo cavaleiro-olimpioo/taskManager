@@ -91,9 +91,15 @@ function Sign(){
         <main className="flex flex-row gap-10 p-10 h-screen min-w-11/12 m-20 mr-10 ml-10 bg-gray-900 overflow-hidden rounded-xl max-w-2xl">
             <article className="w-1/2 h-full rounded-xl overflow-hidden">
                 <div className="overflow-hidden w-full h-full relative">
-                    <div ref={img1Aside} className="absolute inset-0 w-full h-full object-cover bg-cover bg-center transition-all duration-300" style={{backgroundImage: `url(${a1})`}}></div>
-                    <div ref={img2Aside} className="absolute inset-0 w-full h-full object-cover bg-cover bg-center transition-all duration-300" style={{backgroundImage: `url(${a2})`}}></div>
-                    <div ref={img3Aside} className="absolute inset-0 w-full h-full object-cover bg-cover bg-center transition-all duration-300" style={{backgroundImage: `url(${a3})`}}></div>
+                    <div ref={img1Aside} className="flex justify-center absolute inset-0 w-full h-full object-cover bg-cover bg-center transition-all duration-300" style={{backgroundImage: `url(${a1})`}}>
+                        <span className="text-gray-200 font-bold text-2xl pt-10 shadow-2xl">Clareza nas tarefas. Liberdade para criar</span>
+                    </div>
+                    <div ref={img2Aside} className="absolute inset-0 w-full h-full object-cover bg-cover bg-center transition-all duration-300" style={{backgroundImage: `url(${a2})`}}>
+                    </div>
+                    <div ref={img3Aside} className="flex justify-between items-center p-10 flex-col absolute inset-0 w-full h-full object-cover bg-cover bg-center transition-all duration-300" style={{backgroundImage: `url(${a3})`}}>
+                        <span className="text-gray-100 font-bold text-lg">Entre a ideia e a realização existe uma tarefa</span>
+                        <span className="text-gray-100 font-bold text-lg">Toda conquista começa com uma única ação</span>
+                    </div>
                 </div>
             </article>
             <article className="w-1/2 h-full p-10">
