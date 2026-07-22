@@ -23,6 +23,7 @@ public class JwtUtil {
         keyToken = Keys.hmacShaKeyFor(jwtKey.getBytes());
     }
 
+
     public String gerarToken(String nameBody) {
         String token = Jwts.builder()
                 .subject(nameBody)
