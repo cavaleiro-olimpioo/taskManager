@@ -40,7 +40,7 @@ function App() {
 
 
   return (
-    <div className="gap-10 w-screen h-screen bg-gray-800 flex items-center justify-center flex-col">
+    <div className="gap-10 w-screen h-screen bg-gray-950 flex items-center justify-center flex-col">
       
       <Routes>
           <Route path='/login' element={<Login />}></Route>

@@ -108,8 +108,8 @@ function Sign(){
     }
 
     return (
-        <main className="flex flex-row gap-10 p-10 h-screen min-w-11/12 m-20 mr-10 ml-10 bg-gray-900 overflow-hidden rounded-xl max-w-2xl">
-            <article className="w-1/2 h-full rounded-xl overflow-hidden">
+        <main className="flex flex-row gap-10 p-10 h-screen min-w-11/12 m-20 mr-10 ml-10 bg-gray-900 overflow-hidden rounded-xl max-w-2xl shadow-2xl">
+            <article className="w-1/2 h-full rounded-xl overflow-hidden shadow-2xl">
                 <div className="overflow-hidden w-full h-full relative">
                     <div ref={img1Aside} className="flex justify-center absolute inset-0 w-full h-full object-cover bg-cover bg-center transition-all duration-300" style={{backgroundImage: `url(${a1})`}}>
                         <span className="text-gray-200 font-bold text-2xl pt-10 shadow-2xl">Clareza nas tarefas. Liberdade para criar</span>
@@ -124,23 +124,23 @@ function Sign(){
             </article>
             <article className="w-1/2 h-full p-10">
                 <aside className="mb-14">
-                    <h1 className="text-5xl text-sky-500 text-shadow-gray-950 text-shadow-sm mb-3">Criar uma conta</h1>
-                    <p className="inline text-gray-200">Já tem uma conta?</p>
-                    <button className="inline text-sky-500 ml-2">Entrar</button>
+                    <h1 className="text-5xl text-sky-500 text-shadow-lg mb-3">Criar uma conta</h1>
+                    <p className="inline text-gray-200 ">Já tem uma conta?</p>
+                    <a className="inline text-sky-500 ml-2 cursor-pointer" href="/login">Entrar</a>
                 </aside>
                 <aside className="flex flex-col h-full">
                     <div className="w-full flex gap-1 justify-between mb-5">
                         <span></span>
-                        <input ref={firstNameRef} type="text" name="firstName" id="firstName" placeholder="Nome" className="text-gray-200 bg-gray-900 hover:bg-gray-700 p-3 transition duration-150 rounded-xs border border-gray-800 focus:outline-none w-full" />
-                        <input ref={lastNameRef} type="text" name="lastName" id="lastName" placeholder="Sobrenome" className="text-gray-200 bg-gray-900 hover:bg-gray-700 p-3 transition duration-150 rounded-xs border border-gray-800 focus:outline-none w-full" />
+                        <input ref={firstNameRef} type="text" name="firstName" id="firstName" placeholder="Nome" className="text-gray-200 bg-gray-900 hover:bg-gray-700 p-3 transition duration-150 rounded-xs border border-gray-800 focus:outline-none w-full shadow-lg" />
+                        <input ref={lastNameRef} type="text" name="lastName" id="lastName" placeholder="Sobrenome" className="text-gray-200 bg-gray-900 hover:bg-gray-700 p-3 transition duration-150 rounded-xs border border-gray-800 focus:outline-none w-full shadow-lg" />
                     </div>
                     <span ref={errorUsernameRef} className="text-red-500 text-sm font-bold opacity-0 cursor-default">* Preencha seu username para prosseguir</span>
-                    <input ref={usernameRef} type="text" name="username" id="username" placeholder="Nome de usuário" className="text-gray-200 bg-gray-900 hover:bg-gray-700 p-3 transition duration-150 rounded-xs mb-5 border border-gray-800 focus:outline-none" />
+                    <input ref={usernameRef} type="text" name="username" id="username" placeholder="Nome de usuário" className="text-gray-200 bg-gray-900 hover:bg-gray-700 p-3 transition duration-150 rounded-xs mb-5 border border-gray-800 focus:outline-none shadow-lg" />
                     <span ref={errorEmailRef} className="text-red-500 text-sm font-bold opacity-0 cursor-default">* Insira seu email para prosseguir</span>
-                    <input ref={emailRef} type="email" name="email" id="email" placeholder="Email" className="text-gray-200 bg-gray-900 hover:bg-gray-700 p-3 transition duration-150 rounded-xs mb-5 border border-gray-800 focus:outline-none" />
+                    <input ref={emailRef} type="email" name="email" id="email" placeholder="Email" className="text-gray-200 bg-gray-900 hover:bg-gray-700 p-3 transition duration-150 rounded-xs mb-5 border border-gray-800 focus:outline-none shadow-lg" />
                     <span ref={errorPasswordRef} className="text-red-500 text-sm font-bold opacity-0 cursor-default">* Insira sua senha para prosseguir</span>
-                    <input ref={passwordRef} type="password" name="password" id="password" placeholder="Senha" className="text-gray-200 bg-gray-900 hover:bg-gray-700 p-3 transition duration-150 rounded-xs border border-gray-800 focus:outline-none" />
-                    <button className="bg-sky-500 text-white py-2 px-4 rounded-md cursor-pointer hover:bg-sky-600 transition-all mt-10" onClick={submit}>Criar conta</button>
+                    <input ref={passwordRef} type="password" name="password" id="password" placeholder="Senha" className="text-gray-200 bg-gray-900 hover:bg-gray-700 p-3 transition duration-150 rounded-xs border border-gray-800 focus:outline-none shadow-lg" />
+                    <button className="bg-sky-500 text-white py-2 px-4 rounded-md cursor-pointer hover:bg-sky-600 transition-all mt-10 shadow-lg" onClick={submit}>Criar conta</button>
 
                     <div className="mt-5">
                         <input ref={AgreeTermsRef} className="inline mr-3 accent-sky-500" type="checkbox" required name="AgreeTerms" id="AgreeTerms" />

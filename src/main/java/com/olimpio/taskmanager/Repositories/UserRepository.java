@@ -13,6 +13,6 @@ public interface UserRepository extends JpaRepository<UserModel, UUID> {
     @Query("SELECT u.username FROM UserModel u")
     public List<String> findAllUsernames();
 
-    @Query("SELECT u.password FROM UserModel u WHERE u.username = :name")
-    public String findPassword(@Param("name") String name);
+    @Query("SELECT u.password FROM UserModel u WHERE u.username = :username")
+    public String findPassword(@Param("username") String username);
 }
