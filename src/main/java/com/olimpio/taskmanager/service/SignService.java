@@ -19,8 +19,6 @@ public class SignService {
         newUser.setFirstName(first_name);
         newUser.setLastName(last_name);
         newUser.setPassword(password);
-        System.out.println("Salvando dados");
-        System.out.println(email);
         userRepository.save(newUser);
 
     }

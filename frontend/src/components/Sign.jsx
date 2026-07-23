@@ -24,6 +24,9 @@ function Sign(){
     const errorEmailRef = useRef(null)
     const errorPasswordRef = useRef(null)
 
+    const errorEmailRepeatRef = useRef(null)
+    const errorUsernameRepeatRef = useRef(null)
+
     const [temp, setTemp] = useState(0)
 
     useEffect(() => {
@@ -98,7 +101,34 @@ function Sign(){
                 const returnApiLogin = await fetch(url, requestOptions)
                 const data = await returnApiLogin.json()
 
-                window.alert(data.message)
+                if (data == 0){
+                    navigate('/login')
+                } else {
+                    if (data == 1){
+                        window.alert("[ERRO] Algo deu errado, tente novamente")
+                    }
+                    if (data == 2){
+                        errorUsernameRepeatRef.current.classList.remove("hidden")
+                        errorUsernameRepeatRef.current.classList.add("block")
+                        errorUsernameRef.current.classList.add("hidden")
+                    } else {
+                        errorUsernameRepeatRef.current.classList.add("hidden")
+                        errorUsernameRepeatRef.current.classList.remove("block")
+                        errorUsernameRef.current.classList.remove("hidden")
+                    }
+                    if (data == 3){
+                        errorEmailRepeatRef.current.classList.remove("hidden")
+                        errorEmailRepeatRef.current.classList.add("block")
+                        errorEmailRef.current.classList.add("hidden")
+                    } else {
+                        errorEmailRepeatRef.current.classList.add("hidden")
+                        errorEmailRepeatRef.current.classList.remove("block")
+                        errorEmailRef.current.classList.remove("hidden")
+                    }
+                }
+
+
+                
 
             } catch (error) {
                 console.log("[ERRO] Não foi possível se conectar com a API", error)
@@ -109,7 +139,7 @@ function Sign(){
 
     return (
         <main className="flex flex-row gap-10 p-10 h-screen min-w-11/12 m-20 mr-10 ml-10 bg-gray-900 overflow-hidden rounded-xl max-w-2xl shadow-2xl">
-            <article className="w-1/2 h-full rounded-xl overflow-hidden shadow-2xl">
+            <article className="w-1/2 h-full rounded-xl overflow-hidden overflow-y-auto shadow-2xl">
                 <div className="overflow-hidden w-full h-full relative">
                     <div ref={img1Aside} className="flex justify-center absolute inset-0 w-full h-full object-cover bg-cover bg-center transition-all duration-300" style={{backgroundImage: `url(${a1})`}}>
                         <span className="text-gray-200 font-bold text-2xl pt-10 shadow-2xl">Clareza nas tarefas. Liberdade para criar</span>
@@ -135,8 +165,10 @@ function Sign(){
                         <input ref={lastNameRef} type="text" name="lastName" id="lastName" placeholder="Sobrenome" className="text-gray-200 bg-gray-900 hover:bg-gray-700 p-3 transition duration-150 rounded-xs border border-gray-800 focus:outline-none w-full shadow-lg" />
                     </div>
                     <span ref={errorUsernameRef} className="text-red-500 text-sm font-bold opacity-0 cursor-default">* Preencha seu username para prosseguir</span>
+                    <span ref={errorUsernameRepeatRef} className="text-red-500 text-sm font-bold hidden cursor-default">* Username já em uso</span>
                     <input ref={usernameRef} type="text" name="username" id="username" placeholder="Nome de usuário" className="text-gray-200 bg-gray-900 hover:bg-gray-700 p-3 transition duration-150 rounded-xs mb-5 border border-gray-800 focus:outline-none shadow-lg" />
                     <span ref={errorEmailRef} className="text-red-500 text-sm font-bold opacity-0 cursor-default">* Insira seu email para prosseguir</span>
+                    <span ref={errorEmailRepeatRef} className="text-red-500 text-sm font-bold hidden cursor-default">* Email já em uso</span>
                     <input ref={emailRef} type="email" name="email" id="email" placeholder="Email" className="text-gray-200 bg-gray-900 hover:bg-gray-700 p-3 transition duration-150 rounded-xs mb-5 border border-gray-800 focus:outline-none shadow-lg" />
                     <span ref={errorPasswordRef} className="text-red-500 text-sm font-bold opacity-0 cursor-default">* Insira sua senha para prosseguir</span>
                     <input ref={passwordRef} type="password" name="password" id="password" placeholder="Senha" className="text-gray-200 bg-gray-900 hover:bg-gray-700 p-3 transition duration-150 rounded-xs border border-gray-800 focus:outline-none shadow-lg" />

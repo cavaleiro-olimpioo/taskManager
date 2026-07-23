@@ -27,7 +27,7 @@ public class LoginService {
         for(String user : allUsers){
             if (user.equals(nameBody)){
                 test[0] = true;
-                
+                token = jwtUtil.gerarToken(nameBody);
                 password = userConsute.getPassword(user);
                 if(password.equals(passwdBody)){
                     test[1] = true;

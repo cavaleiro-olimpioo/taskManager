@@ -11,7 +11,19 @@ import java.util.ArrayList;
 import com.olimpio.taskmanager.models.TaskModel;
 
 @Entity
-@Table(name = "USER_TB")
+@Table(
+        name = "USER_TB",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "uk_user_username",
+                        columnNames = "username"
+                ),
+                @UniqueConstraint(
+                        name = "uk_user_email",
+                        columnNames = "email"
+                )
+        }
+)
 public class UserModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -25,13 +37,14 @@ public class UserModel implements Serializable {
     @Column()
     private String lastName;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String username;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String email;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

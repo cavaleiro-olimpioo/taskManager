@@ -14,7 +14,7 @@ function Login() {
         const requestOptions = {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 'username':  nameRef.current.value, 'password': passRef.current.value })
+            body: JSON.stringify({ 'name':  nameRef.current.value, 'password': passRef.current.value })
         }
         const url = 'http://localhost:8080/login'
         try{
